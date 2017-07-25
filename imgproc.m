@@ -1,7 +1,7 @@
 clear bb bc data;
 g=[,];
 % For work with recorded videos
-filename='red.mp4';
+filename='sample.mp4';
 v = VideoReader(filename);
 frameno = 1;                            % frame number=0;
 while hasFrame(v)
