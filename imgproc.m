@@ -6,11 +6,11 @@ v = VideoReader(filename);
 frameno = 1;                            % frame number=0;
 while hasFrame(v)
       data= readFrame(v);
-      img = imsubtract(data(:,:,1), rgb2gray(data)); 
+      img = imsubtract(data(:,:,3), rgb2gray(data)); 
       img = medfilt2(img, [3 3]);             
       img = im2bw(img,0.4);
       % Remove all those pixels less than 300px
-      img = bwareaopen(img,700);
+      img = bwareaopen(img,300);
       % Label all the connected components in the image.
       bw = bwlabel(img, 8);
       % Here we do the image blob analysis.
@@ -30,6 +30,7 @@ while hasFrame(v)
       imshow(data)      
       hold on
       plot(g(:,2),g(:,1))
-      hold off;
+      hold off
+      drawnow
       frameno=frameno+1;
 end
