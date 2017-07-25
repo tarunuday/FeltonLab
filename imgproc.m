@@ -8,7 +8,7 @@ while hasFrame(v)
       data= readFrame(v);
       img = imsubtract(data(:,:,3), rgb2gray(data)); 
       img = medfilt2(img, [3 3]);             
-      img = im2bw(img,0.4);
+      img = im2bw(img,0.18);
       % Remove all those pixels less than 300px
       img = bwareaopen(img,300);
       % Label all the connected components in the image.
@@ -29,7 +29,9 @@ while hasFrame(v)
       end
       imshow(data)      
       hold on
-      plot(g(:,2),g(:,1))
+      if(g)  
+          plot(g(:,1),g(:,2))
+      end
       hold off
       drawnow
       frameno=frameno+1;
